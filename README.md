@@ -17,9 +17,9 @@ Follow these steps to set up the project on your local machine.
 
 ### **1️⃣ Clone the Repository**
 ```bash
-git clone https://github.com/your-repo/house-price-prediction.git
+git clone https://github.com/https://github.com/jd20000/House_Prediction/house-price-prediction.git
 ```
-_Replace `your-repo` with your actual GitHub repository link._
+
 
 ---
 
