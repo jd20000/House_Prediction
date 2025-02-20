@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+
+        .result-box {
+            background-color: #d4edda;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center">House Price Predictor</h2>
+        <form action="/" method="post">
+            <div class="mb-3">
+                <label class="form-label">Median Income ( In Lakhs)</label>
+                <input type="number" step="0.01" class="form-control" name="medinc" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">House Age</label>
+                <input type="number" step="1" class="form-control" name="house_age" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Average Rooms</label>
+                <input type="number" step="0.1" class="form-control" name="avg_rooms" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Average Occupancy</label>
+                <input type="number" step="0.1" class="form-control" name="avg_occup" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict Price</button>
+        </form>
+        {% if error_message %}
+        <div class="alert alert-danger mt-3">
+            {{ error_message }}
+        </div>
+        {% endif %}
+        {% if prediction %}
+        <div class="alert alert-success mt-3">
+            <strong>Predicted House Price: {{ prediction }}</strong>
+        </div>
+        {% endif %}
+        
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- VALIDATIONS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+
+            form.addEventListener("submit", function (event) {
+                let valid = true;
+                let errorMessage = "";
+
+                // Get input values
+                let medinc = parseFloat(document.querySelector("[name='medinc']").value);
+                let houseAge = parseInt(document.querySelector("[name='house_age']").value);
+                let avgRooms = parseFloat(document.querySelector("[name='avg_rooms']").value);
+                let avgOccup = parseFloat(document.querySelector("[name='avg_occup']").value);
+
+                // Validation rules
+                if (medinc <= 0 || isNaN(medinc)) {
+                    valid = false;
+                    errorMessage += "Median income must be a positive number.\n";
+                }
+                if (houseAge < 0 || houseAge > 150 || isNaN(houseAge)) {
+                    valid = false;
+                    errorMessage += "House age must be between 0 and 150 years.\n";
+                }
+                if (avgRooms <= 0 || isNaN(avgRooms)) {
+                    valid = false;
+                    errorMessage += "Average rooms must be greater than zero.\n";
+                }
+                if (avgOccup <= 0 || isNaN(avgOccup)) {
+                    valid = false;
+                    errorMessage += "Average occupancy must be greater than zero.\n";
+                }
+
+                // Show alert if invalid
+                if (!valid) {
+                    event.preventDefault(); // Stop form submission
+                    alert(errorMessage);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
