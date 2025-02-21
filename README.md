@@ -90,6 +90,11 @@ Enter house details and get the predicted price in **Indian Rupees (₹)**.
 ```bash
 deactivate
 ```
+### screenshots
+![INTERFACE]([https://github.com/jd20000/House_Prediction/blob/main/screenshots/Screenshot%20(11).png])
+![INTERFACE]([https://github.com/jd20000/House_Prediction/blob/main/screenshots/Screenshot%20(12).png])
+![INTERFACE]([https://github.com/jd20000/House_Prediction/blob/main/screenshots/Screenshot%20(13).png])
+![INTERFACE]([https://github.com/jd20000/House_Prediction/blob/main/screenshots/Screenshot%20(14).png])
 
 ---
 
