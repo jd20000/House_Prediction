@@ -8,7 +8,7 @@ This is a **Flask-based web application** that predicts house prices based on us
 - Location 📍
 - Median Income (in Lakhs ₹)
 
-The application uses a **Machine Learning Model** trained on an open-source housing dataset to provide accurate price predictions.
+The application uses a **Machine Learning Model** trained on an open-source housing dataset (California) to provide accurate price predictions.
 
 ---
 
